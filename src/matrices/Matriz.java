@@ -46,7 +46,22 @@ public class Matriz {
             } 
         } 
         return matrizResultante; 
-    } 
+    }
+
+    public static Matriz invertirMatriz(Matriz a) throws DimensionesIncompatibles {
+
+        if(! ((a.getDimension().width) == (a.getDimension().height))) throw new DimensionesIncompatibles("La inversa requiere que la matriz tenga el mismo número de filas que de columnas.");
+        int i, j, cfA;
+        cfA = a.getDimension().height;
+        Matriz matrizResultante = new Matriz(cfA, cfA, false);
+
+        for (i = 0; i < cfA; i++) {
+            for (j = 0; j < cfA; j++) {
+                matrizResultante.datos[j][i] = a.datos[i][j];
+            }
+        }
+        return matrizResultante;
+    }
 
     @Override
     public String toString(){
